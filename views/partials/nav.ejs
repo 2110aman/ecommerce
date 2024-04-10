@@ -17,12 +17,16 @@
     <div class="nav-bottom">
       <div class="logo">
         <a class="navbar-brand" href="#">
-          <div><img src="./img/logo2bgremoved.png" alt="" /></div>
+          <div><img src="./img/logo.png" alt="" /></div>
           <div class="logo-text">Shoo<span class="logo-c">C</span>art</div>
         </a>
       </div>
 
       <div class="nav-content">
+
+        <div id="cross">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
         <div class="nav-menus">
           <ul>
             <li class="nav-item">
@@ -32,9 +36,7 @@
               <a class="nav-link active" aria-current="page" href="#">Women</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Sneakers</a
-              >
+              <a class="nav-link active" aria-current="page" href="#">Sneakers</a>
             </li>
           </ul>
         </div>
@@ -43,27 +45,45 @@
             <div class="search-icon">
               <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">
               Search
             </button>
           </form>
         </div>
+
         <div class="account">
-          <button class="acc-btn">
-            <i class="fa-regular fa-circle-user"></i>
-            Login
-          </button>
+          <a href="/user/signin">
+            <button class="acc-btn">
+              <i class="fa-regular fa-circle-user"></i>
+              <% if (locals.user) { %>
+                <div class="acc-text"><%= user.fullName.split(" ")[0]%></div>
+              <% } else { %>
+                <div class="acc-text">Login</div>
+
+                <% } %>
+            </button>
+          </a>
+         <% if (locals.user) { %>
+          <ul class="account-dropdown-menu">
+            <li><a class="account-dropdown-item" href="/user/logout">Logout</a></li>
+            <!-- <li><a class="account-dropdown-item" href="#">Another action</a></li>
+            <li><a class="account-dropdown-item" href="#">Something else here</a></li> -->
+          </ul>
+         <% } %>
         </div>
+
         <div class="cart">
           <i class="fa-solid fa-cart-plus"></i>
+          <div class="cart-text">Cart</div>
         </div>
+        <div id="menu-bar">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+
+
       </div>
     </div>
   </nav>
+
 </header>

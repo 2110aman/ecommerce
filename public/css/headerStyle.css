@@ -15,6 +15,7 @@ body {
 .container {
   max-width: 1450px;
   height: 100%;
+  position: relative;
 }
 
 ul {
@@ -27,13 +28,14 @@ a {
 /* header styling */
 #header {
   width: 100%;
-  height: 15vh;
+  /* height: 12vh; */
   /* background-color: red; */
-  padding: 5px 15px;
+  padding: 5px 15px 0 15px;
 }
 #header nav {
   display: flex;
   flex-direction: column;
+
 }
 #header .nav-top ul {
   display: flex;
@@ -51,7 +53,8 @@ a {
 }
 #header .nav-bottom {
   width: 100%;
-  height: 80%;
+  /* height: 80%; */
+  /* background-color: green; */
   display: flex;
   font-size: 2rem;
   justify-content: space-between;
@@ -111,6 +114,7 @@ a {
 }
 #header .search-form form {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -138,11 +142,15 @@ a {
   background-color: #e5e5e5;
 }
 #header .acc-btn {
-  padding: 0.6rem 0.5rem;
+  padding: 0.4rem 0.5rem;
   border-radius: 8px;
+  width: fit-content;
   border: none;
   font-size: 1.2vmax;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 #header .acc-btn:hover {
   background-color: #ff7f00;
@@ -150,8 +158,112 @@ a {
 }
 #header .cart {
   cursor: pointer;
-  font-size: 1.6vmax;
+  font-size: 2vmax;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1vmax;
+  font-weight: 500;
 }
+#header .cart-text {
+  display: none;
+}
+
+#header #menu-bar {
+  font-size: 3.4vmax;
+  display: none;
+}
+#header #cross {
+  font-size: 3vmax;
+  display: none;
+}
+#header .dsp-block {
+  display: block;
+}
+#header .dsp-none {
+  display: none;
+}
+
+
 /* header styling ends */
 
-/* Media query */
+
+
+
+/* keyframe animations starts here */
+@keyframes comeOut {
+  0% {
+width: 0;
+
+  }
+  100% {
+    width: 90%;
+  }
+}
+
+
+/* keyframe animations ends here */
+
+
+
+/* Media query starts */
+
+/* media query for nav bar */
+@media (max-width: 990px) {
+  #header #active{
+    padding-top: 6vmax;
+    position: absolute;
+    background-color: #ffffff;
+    top: 0;
+    right: 0;
+    width: 90%;
+    height: 100%;
+    z-index: 5;
+    animation-name: comeOut;
+    animation-duration: .3s;
+    box-shadow: -50px 0 40px rgb(192, 192, 192);
+    flex-direction: column;
+    justify-content: flex-start;
+  
+  }
+  #header .nav-menus, #header .acc-text {
+    display: none;
+  }
+  #header #menu-bar {
+    display: block;
+  }
+  #header .acc-btn {
+    font-size: 3vmax;
+    background-color: transparent;
+  }
+  #header .cart {
+    font-size: 3vmax;
+  }
+  #header .nav-bottom .nav-content {
+   justify-content: flex-end;
+   gap: 5.2vw; 
+  }
+
+  #header  .nav-menus ul{
+    flex-direction: column;
+    gap: 1.5vmax;
+  }
+  #header  .nav-menus ul a {
+    font-size: 3vmax;
+  }
+  #header .search-form {
+    display: none;
+  }
+  #header .acc-btn {
+    margin-right: 4vmin;
+  }
+  #header .cart-text {
+    margin-right: 6vmin;
+  }
+  #header #cross {
+    position: absolute;
+    right: 4vmax;
+    top: 1.75vmax;
+    font-size: 4vmax;
+  }
+}

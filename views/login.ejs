@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Shookart-login</title>
+  <%- include('./partials/head.ejs') %>
+</head>
+
+<body>
+  <div class="body">
+    <div class="login-container">
+      <div class="sigin-signup">
+        <!-- signin-->
+
+        <form action="/user/signin" method="post" class="sign-in-form">
+
+          <h2 class="title">Sign In</h2>
+          <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email Id" name="email" />
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" />
+          </div>
+
+          <!-- error div -->
+
+          <% if (locals.error) { %>
+          <div class="error"><%= locals.error %></div>
+          <% } %>
+          <input type="submit" value="Sign In" class="btn" />
+          <p class="social-text">Or Sign In with social platform</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-twitter"></i></a>
+            <a href="/user/login/google" class="social-icon google-icon">
+              <i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <p class="account-text">
+            Dont have an account?<a href="#" id="sign-up-btn2"> Sign Up</a>
+          </p>
+        </form>
+
+        <!-- signUp -->
+        <form action="/user/signup" method="post" class="sign-up-form">
+
+          <h2 class="title">Sign Up</h2>
+          <div class="input-field">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Full Name" name="fullName" />
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-envelope"></i>
+            <input type="email" placeholder="Email Id" name="email" />
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" />
+          </div>
+          <input type="submit" value="Sign Up" class="btn" />
+          <p class="social-text">Or Sign Up with social platform</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-twitter"></i></a>
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-google"></i></a>
+            <a href="#" class="social-icon">
+              <i class="fa-brands fa-linkedin"></i></a>
+          </div>
+          <p class="account-text">
+            Already have an account?<a href="#" id="sign-in-btn2"> Sign In</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- panel -->
+
+      <!-- left panel -->
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>"Ready to Step Back In? Access Your Account Now!"</h3>
+            <p>
+              "Step into Style: Where Every Login is a Fashion Statement!"
+              <br />
+              Already have an account
+            </p>
+            <button class="btn" id="sign-in-btn">Sign In</button>
+          </div>
+          <img src="/img/undraw_login_re_4vu2.svg" alt="" class="image" />
+        </div>
+
+        <!-- Right panel -->
+
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>"Ready to Step into Your Style Journey? Sign Up!"</h3>
+            <p>"Lace Up for Luxury - Begin Your Exclusive Journey With Us!"</p>
+            <button class="btn" id="sign-up-btn">Sign Up</button>
+          </div>
+          <img src="/img/undraw_undraw_sign_up_ln1s_-1-_s4bc.svg" alt="" class="image" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- javascript -->
+
+  <script type="module" src="/js/loginScript.js"></script>
+</body>
+
+</html>

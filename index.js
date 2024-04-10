@@ -1,15 +1,22 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const ejsMate = require("ejs-mate");
+const cookiePaser = require("cookie-parser");
+const passport = require('passport');
+const session = require("express-session");
 
 const userRoute = require("./routes/user");
+
+
+
+const {
+  checkForAuthenticationCookie,
+} = require("./middlewares/authentication");
 
 const app = express();
 const PORT = 8000;
 
 // mongodb connection
-
 main()
   .then(() => {
     console.log("mongodb connected");
@@ -17,6 +24,8 @@ main()
   .catch((err) => {
     console.log(err);
   });
+
+
 
 async function main() {
   await mongoose.connect("mongodb://127.0.0.1:27017/cart");
@@ -27,15 +36,22 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.urlencoded({ extended: true }));
-app.engine("ejs", ejsMate);
+app.use(cookiePaser());
+app.use(checkForAuthenticationCookie("token"));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+
+
 
 // apis
 app.get("/", (req, res) => {
-  return res.render("home.ejs");
+  return res.render("home.ejs", {
+    user: req.user,
+  });
 });
-app.get("/show", (req, res) => {
-  return res.render("show.ejs");
-});
+
 
 app.use("/user", userRoute);
 
